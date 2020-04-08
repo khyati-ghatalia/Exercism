@@ -1,0 +1,19 @@
+package hamming
+
+import "errors"
+
+var errDistance = errors.New("Invalid")
+
+//Distance function is to calculate hamming distance between 2 DNAs
+func Distance(a, b string) (int, error) {
+	var counter = 0
+	if len(a) != len(b) {
+		return 0, errDistance
+	}
+	for indx, value := range a {
+		if string(b[indx]) != string(value) {
+			counter = counter + 1
+		}
+	}
+	return counter, nil
+}
